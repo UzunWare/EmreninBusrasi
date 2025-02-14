@@ -3,6 +3,16 @@ var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
+document.addEventListener("DOMContentLoaded", function () {
+  const skipButton = document.getElementById("skipButton");
+
+  if (skipButton) {
+      skipButton.addEventListener("click", function () {
+          window.location.href = "/pages/index.html"; // Redirect to main page
+      });
+  }
+});
+
 $(function () {
     // setup garden
 	$loveHeart = $("#loveHeart");

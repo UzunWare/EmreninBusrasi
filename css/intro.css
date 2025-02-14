@@ -19,3 +19,23 @@
 #copyright a{color:#666}
 #icon{font-size: 48px;color: red;margin: 50 px; align-content: center;}
 #heartspan{align-content: center;text-align: center;margin: 20px;}
+#skipButton {
+  background-color: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 8px;
+  display: block;
+  text-align: center;
+  width: fit-content;
+  margin: 20px auto;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#skipButton:hover {
+  background-color: #e60039;
+}
