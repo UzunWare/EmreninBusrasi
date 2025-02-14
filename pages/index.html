@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özel Sürpriz</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCFqfowG12sSp9al5Ille1pvwHYZ-3TSqU",
+        authDomain: "emreninbusrasi-ace67.firebaseapp.com",
+        projectId: "emreninbusrasi-ace67",
+        storageBucket: "emreninbusrasi-ace67.firebasestorage.app",
+        messagingSenderId: "907776175732",
+        appId: "1:907776175732:web:70827d8cb573ff6664eb21"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+
+    <header>
+        <h1>Özel Sürpriz Sitesi</h1>
+        <p>Bu sayfa sana özel hazırlanmıştır! ❤️</p>
+    </header>
+
+    <main>
+        <button id="revealButton">Sürprizi Gör</button>
+        <div id="surpriseContainer" class="hidden">
+            <p id="message"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Emrenin Büşrası ❤️</p>
+    </footer>
+    
+    <script src="/js/navbar.js"></script>
+    <script src="/js/footer.js"></script>
+    <script type="module" src="/js/script.js"></script>
+</body>
+</html>

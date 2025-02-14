@@ -1,0 +1,65 @@
+.music-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+audio {
+  width: 80%;
+  max-width: 400px;
+  margin: 20px 0;
+}
+
+.playlist {
+  list-style: none;
+  padding: 0;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.playlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  transition: 0.3s;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.playlist li:hover {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+/* Play & Delete Buttons */
+.playlist button {
+  background-color: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.playlist button:hover {
+  background-color: #e60039;
+}
+
+/* Status Message */
+#status {
+  font-size: 1.2em;
+  margin-top: 20px;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .playlist {
+    width: 90%;
+  }
+}
