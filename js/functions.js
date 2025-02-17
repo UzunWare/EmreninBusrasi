@@ -3,6 +3,9 @@ var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
+var togetherDate = new Date(2024, 11, 7);
+var nextMeetingDate = new Date(2025, 5, 1);
+
 document.addEventListener("DOMContentLoaded", function () {
   const skipButton = document.getElementById("skipButton");
 
@@ -11,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.href = "/pages/index.html"; // Redirect to main page
       });
   }
+
+  updateTimers();
+  setInterval(updateTimers, 1000);
 });
 
 $(function () {
@@ -44,6 +50,48 @@ $(window).resize(function() {
         location.replace(location);
     }
 });
+
+function updateTimers() {
+  var now = new Date();
+  var seconds = (Date.parse(now) - Date.parse(togetherDate)) / 1000;
+  var days = Math.floor(seconds / (3600 * 24));
+  seconds = seconds % (3600 * 24);
+  var hours = Math.floor(seconds / 3600);
+  if (hours < 10) hours = "0" + hours;
+  seconds = seconds % 3600;
+  var minutes = Math.floor(seconds / 60);
+  if (minutes < 10) minutes = "0" + minutes;
+  seconds = seconds % 60;
+  if (seconds < 10) seconds = "0" + seconds;
+
+  /*var result = `<span class="digit">${days}</span> gün 
+                <span class="digit">${hours}</span> saat 
+                <span class="digit">${minutes}</span> dakika 
+                <span class="digit">${seconds}</span> saniye`;
+  $("#elapseClock").html(result);
+*/
+  // İKİNCİ SAYAC: Buluşmaya kalan süre
+  var remaining = (Date.parse(nextMeetingDate) - Date.parse(now)) / 1000;
+  if (remaining <= 0) {
+      $("#countdownClock").html("💕 Buluşma zamanı geldi! 💕");
+  } else {
+      var rDays = Math.floor(remaining / (3600 * 24));
+      remaining = remaining % (3600 * 24);
+      var rHours = Math.floor(remaining / 3600);
+      if (rHours < 10) rHours = "0" + rHours;
+      remaining = remaining % 3600;
+      var rMinutes = Math.floor(remaining / 60);
+      if (rMinutes < 10) rMinutes = "0" + rMinutes;
+      remaining = remaining % 60;
+      if (remaining < 10) remaining = "0" + remaining;
+
+      var countdownResult = `<span class="digit">${rDays}</span> gün 
+                             <span class="digit">${rHours}</span> saat 
+                             <span class="digit">${rMinutes}</span> dakika 
+                             <span class="digit">${remaining}</span> saniye`;
+      $("#countdownClock").html(countdownResult);
+  }
+}
 
 function getHeartPoint(angle) {
 	var t = angle / Math.PI;
@@ -122,15 +170,11 @@ function timeElapse(date){
 	}
 	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
 	$("#elapseClock").html(result);
-  $("#elapseClock2").html(result);
 }
 
 function showMessages() {
 	adjustWordsPosition();
 	$('#messages').fadeIn(5000, function() {
-		showLoveU();
-	});
-  $('#messages2').fadeIn(5000, function() {
 		showLoveU();
 	});
 }
