@@ -1,15 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Güzeller Güzeli Sevgilim Büşram İçin</title>
 
 <style type="text/css">
   @font-face {
 	font-family: digit;
-	src: url('digital-7_mono.ttf') format("truetype");
-}
+	src: url('/fonts/digital-7_mono.ttf') format("truetype");
+  }
+  .heart-button {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  .heart-button img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .heart-button:hover img {
+    transform: scale(1.1);
+  }
+
+
 </style>
 <link href="/css/intro.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.js"></script>
@@ -19,6 +38,13 @@
 </head>
 
 <body>
+  <div id="uploadContainer">
+    <h4 class="textFont">Add background image</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="uploadButton" class="uploadeleteButton">Choose an Image</button>
+    <button id="resetButton" class="uploadeleteButton">Reset Background</button>
+
+  </div>
   <div id="mainDiv">
     <div id="content">
       <div id="code">
@@ -52,11 +78,14 @@
         <br>
         Eğer duygularımı paylaşıyorsan aşağıdaki kalbe tıkla :)<br />
         <br>
-        <span id="heartspan">
-        <a href="/images/mysunshine.jpg"><i class="fas fa-heart" id="icon"></i></a>
-        </span>
+        
+        
+        <!--<span id="heartspan">
+          <button id="skipButton">Sürprizi Atla 🚀</button>
+        <a href="/images/mysunshine.jpg"><i class="fas fa-heart" id="icon"></i></a> 
+        </span>-->
       </div>
-
+      
       <div id="loveHeart">
         <canvas id="garden"></canvas>
         <div id="words">
@@ -74,6 +103,9 @@
             <div class="signature">- BÜŞRA'm</div>
           </div>
         </div>
+        <span id="heartspan" class="heart-button">
+          <img src="/images/heart.png" alt="Busram" id="heartButton">
+        </span>
       </div>
     </div>
     <!--
@@ -84,6 +116,35 @@
   </div>
   
   <script type="text/javascript">
+    let defaultBackground = document.body.style.background;
+
+
+    document.getElementById("heartspan").addEventListener("click", function() {
+      window.open("/images/mysunshine.jpg", "_blank");
+    });
+
+    document.getElementById("uploadButton").addEventListener("click", function() {
+      document.getElementById("fileInput").click();
+    });
+
+    document.getElementById("fileInput").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              document.body.style.backgroundImage = `url('${e.target.result}')`;
+              document.body.style.backgroundSize = "cover";
+              document.body.style.backgroundPosition = "center";
+              document.body.style.backgroundRepeat = "no-repeat";
+          };
+          reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById("resetButton").addEventListener("click", function() {
+      document.body.style.background = defaultBackground; // Reset to default background
+    });
+
     var offsetX = $("#loveHeart").width() / 2;
     var offsetY = $("#loveHeart").height() / 2 - 55;
     var together = new Date();
