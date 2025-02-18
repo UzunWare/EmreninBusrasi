@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memories</title>
+  <link rel="stylesheet" href="/css/memories.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+
+  <h1>Hatıralarımız 📸</h1>
+  <div id="uploadContainer">
+    <input type="file" id="fileInput" accept="images/" style="display: none;">
+    <button id="uploadButton">Upload a Photo</button>
+  </div>
+
+  <<div id="popupContainer">
+    <div id="popup">
+        <h2 id="popupHeader">Upload Image</h2>
+        <img id="popupImage" src="" alt="Selected Image">
+        <input type="text" id="popupTitle" placeholder="Enter title">
+        <textarea id="popupDescription" placeholder="Enter description"></textarea>
+        <div class="popup-buttons">
+            <button id="popupUpload">Upload</button>
+            <button id="popupCancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+  <!-- Gallery Section-->
+  <div id="gallery"></div>
+ 
+   <!-- Scripts -->
+  <script src="/js/navbar.js"></script>
+  <script src="/js/footer.js"></script>
+  <script type="module" src="/js/memories.js"></script>
+</body>
+</html>
