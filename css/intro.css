@@ -98,3 +98,153 @@
 #resetButton:hover {
   background-color: #a71d2a;
 }
+
+/* Floating Notes Button */
+.floating-notes-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.floating-notes-button:hover {
+  background-color: #e60039;
+}
+
+/* Modal (Popup Window) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#noteInput {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+}
+
+#saveNoteButton {
+  background-color: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+#saveNoteButton:hover {
+  background-color: #e60039;
+}
+
+/* Notes Display */
+.note {
+  background-color: #ffebcd;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: left;
+  position: relative;
+}
+
+.delete-note {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: red;
+}
+
+/* Small Note View Modal */
+#noteViewModal {
+  display: none;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#noteViewModal .modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-view-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.note-preview {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.note-preview:hover {
+  color: #ff4d6d;
+}
+
+.new-badge {
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+}

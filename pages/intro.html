@@ -34,10 +34,25 @@
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/garden.js"></script>
 <script type="text/javascript" src="/js/functions.js"></script>
+<script type="module" src="/js/notes.js"></script>
 
 </head>
 
 <body>
+  <!-- Floating Notes Button -->
+  <button id="openNotesButton" class="floating-notes-button">📝 Notes</button>
+
+  <!-- Notes Modal -->
+  <div id="notesModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Our Love Notes ❤️</h2>
+      <div id="notesContainer"></div>
+      <textarea id="noteInput" placeholder="Write a note..."></textarea>
+      <button id="saveNoteButton">Save Note</button>
+    </div>
+  </div>
+
   <div id="uploadContainer">
     <h4 class="textFont">Add background image</h1>
     <input type="file" id="fileInput" accept="image/*">
@@ -103,11 +118,12 @@
       </div>
     </div>
     
+    <!--
     <br>
       <button id="skipButton">Sürprizi Atla 🚀</button>
     <br>
     
-  </div>
+  </div>-->
   
   <script type="text/javascript">
     let defaultBackground = document.body.style.background;
