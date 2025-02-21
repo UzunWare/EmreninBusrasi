@@ -164,6 +164,15 @@ function displayImage(id, title, description, imageURL) {
     imageElement.src = imageURL;
     imageElement.classList.add("photo");
 
+    // ✅ Open full-size image when clicked
+    imageElement.addEventListener("click", () => {
+        document.getElementById("fullImage").src = imageURL;
+        document.getElementById("fullImageContainer").style.display = "flex";
+    });
+
+    document.getElementById("fullImageContainer").style.display = "none";
+
+
     const titleElement = document.createElement("h3");
     titleElement.classList.add("photo-title"); // ✅ Used for updating later
     titleElement.textContent = title;
@@ -244,13 +253,75 @@ async function saveImageData(title, description, imageURL) {
 
 
 async function loadImages() {
-  const querySnapshot = await getDocs(collection(db, "gallery"));
+  console.log("Fetching images...");
+    try {
+        const querySnapshot = await getDocs(collection(db, "gallery"));
+        let images = [];
 
-  querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      displayImage(doc.id, data.title, data.description, data.imageURL);
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            console.log("Fetched Image:", data); // ✅ Debugging log
+            images.push({
+                id: doc.id,
+                title: data.title,
+                description: data.description,
+                imageURL: data.imageURL,
+                timestamp: data.timestamp ? data.timestamp.toDate() : new Date()
+            });
+        });
+
+        // ✅ Debug: Check if images exist
+        console.log("Total images fetched:", images.length);
+
+        sortAndDisplayImages(images);
+        return images;
+    } catch (error) {
+        console.error("Error loading images:", error);
+        return [];
+    }
+
+}
+
+function sortAndDisplayImages(images) {
+  const sortOption = document.getElementById("sortOptions").value;
+
+  if (sortOption === "newest") {
+    images.sort((a, b) => b.timestamp - a.timestamp);
+  } else if (sortOption === "oldest") {
+    images.sort((a, b) => a.timestamp - b.timestamp);
+  }
+  displayImages(images);
+}
+
+// ✅ Filtering function
+function filterImages(images) {
+  const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+  return images.filter(image =>
+      image.title.toLowerCase().includes(searchQuery) ||
+      image.description.toLowerCase().includes(searchQuery)
+  );
+}
+
+// ✅ Function to display images
+function displayImages(images) {
+  gallery.innerHTML = ""; // Clear existing images
+
+  images.forEach((image) => {
+      displayImage(image.id, image.title, image.description, image.imageURL);
   });
 }
+
+document.getElementById("closeFullImage").addEventListener("click", () => {
+  document.getElementById("fullImageContainer").style.display = "none";
+});
+
+// ✅ Event listeners for sorting & filtering
+document.getElementById("sortOptions").addEventListener("change", () => loadImages());
+document.getElementById("searchInput").addEventListener("input", async () => {
+  const images = await loadImages(); // ✅ Ensure images are fetched
+  const filteredImages = filterImages(images);
+  displayImages(filteredImages);
+});
 
 // ✅ Load images when the page loads
 window.addEventListener("DOMContentLoaded", loadImages);
