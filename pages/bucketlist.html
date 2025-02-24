@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bucket List</title>
+  <link rel="stylesheet" href="/css/bucketlist2.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+<!-- Pop-up for Detailed Bucket List View -->
+<div id="popupContainer" class="popup">
+  <div class="popup-content">
+      <span class="close-btn" id="closePopup">&times;</span>
+      <h2 id="popupTitle">Bucket List Item</h2>
+      <p id="popupDescription"></p>
+
+      <!-- Image Upload Section -->
+      <div id="imageUploadSection">
+          <h3>📸 Upload Pictures</h3>
+          <input type="file" id="imageInput" accept="image/*">
+          <button id="uploadImageButton">Upload</button>
+      </div>
+
+      <!-- Image Gallery Section -->
+      <h3>🖼️ Uploaded Pictures</h3>
+      <div id="imageGallery">
+          <!-- Images will be displayed here dynamically -->
+      </div>
+  </div>
+</div>
+  <div id="container">
+    <h1>🎯 Our Bucket List</h1>
+
+    <!-- Form to Add New Bucket List Items -->
+    <div id="addItemForm">
+        <input type="text" id="bucketTitle" placeholder="Enter a new bucket list item" required>
+        <textarea id="bucketDescription" placeholder="Add details (optional)"></textarea>
+        <button id="addButton">➕ Add</button>
+    </div>
+
+    <!-- Sorting & Filtering Options -->
+    <div id="controls">
+        <select id="sortOptions">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+
+        <select id="filterOptions">
+            <option value="all">Show All</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+        </select>
+    </div>
+
+    <!-- List of Bucket List Items -->
+    <div id="bucketList">
+        <!-- Items will be dynamically added here -->
+    </div>
+  </div>
+ 
+   <!-- Scripts -->
+  <script src="/js/navbar.js"></script>
+  <script src="/js/footer.js"></script>
+  <script type="module" src="/js/bucketlist.js"></script>
+</body>
+</html>

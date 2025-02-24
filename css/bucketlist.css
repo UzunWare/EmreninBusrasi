@@ -1,0 +1,140 @@
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+#container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+#addItemForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#addButton {
+  background: green;
+}
+
+#addButton:hover {
+  background: darkgreen;
+}
+
+/* Sorting & Filtering */
+#controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Bucket List Item Styling */
+.bucket-item {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bucket-item h3, 
+.bucket-item p {
+    flex-grow: 1; /* Title & description take space */
+    margin: 5px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* Action Buttons */
+button.complete-btn {
+  background: #007bff;
+}
+
+button.complete-btn:hover {
+  background: #0056b3;
+}
+
+button.delete-btn {
+  background: red;
+}
+
+button.delete-btn:hover {
+  background: darkred;
+}
+
+button.edit-btn {
+  background: orange;
+}
+
+button.edit-btn:hover {
+  background: darkorange;
+}
+
+button.complete-btn, 
+button.edit-btn, 
+button.delete-btn {
+    font-size: 14px; /* Smaller text */
+    padding: 5px 10px; /* Smaller padding */
+    margin: 5px; /* Space between buttons */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add spacing for mobile */
+@media (max-width: 600px) {
+  .bucket-item {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  button.complete-btn, 
+  button.edit-btn, 
+  button.delete-btn {
+      width: 100%; /* Make buttons full-width on mobile */
+      margin-top: 5px;
+  }
+}
